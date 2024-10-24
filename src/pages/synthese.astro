@@ -1,0 +1,87 @@
+---
+import { Combobox } from "@components/Combobox";
+import { ButtonNext, ButtonPrev } from "@/components/ButtonNext";
+import Layout from "../layouts/Layout.astro";
+import {
+  Link,
+  Heading,
+  Box,
+  Flex,
+  Separator,
+  Badge,
+  Text,
+} from "@radix-ui/themes";
+import EditableTextArea from "@/components/EditableTextArea";
+import { TreeMap } from "@/components/TreeMap";
+import InputFile from "@/components/InputFile";
+import { PageHeading, PageSubHeading, PageText } from "@/components/Typography";
+import { file } from "astro/loaders";
+import SyntheseFiles from "@/components/SyntheseFiles";
+---
+
+<Layout title="Synthèse SAE">
+  <PageHeading title="Synthèse SEA" badgeTitle="Etape 1" badgeColor="pink" />
+
+  <Flex direction="column" gap="5" align="center" width="100%" mb="6">
+    <Flex direction="column" gap="2">
+      <PageSubHeading title="Compétences" />
+      <TreeMap client:load />
+    </Flex>
+
+    <Separator style={{ width: "30%" }} />
+
+    <Flex direction="column" gap="2" width="100%">
+      <PageSubHeading title="Contexte et Objectifs" />
+
+      <EditableTextArea
+        placeholder={"Présentez votre projet en quelques phrases"}
+        dataKey="contexte"
+        client:load
+      />
+    </Flex>
+
+    <Separator style={{ width: "30%" }} />
+
+    <Flex direction="column" gap="2" width="100%">
+      <PageSubHeading title="Démarche de Projet" />
+
+      <EditableTextArea
+        placeholder={"Quelle a été la méthodologie pour réaliser les étapes du projet"}
+        dataKey="demarche"
+        client:load
+      />
+    </Flex>
+
+    <Separator style={{ width: "30%" }} />
+
+    <Flex direction="column" gap="2" width="100%">
+      <PageSubHeading title="Livrables" />
+
+      <EditableTextArea
+        placeholder={"Présentez vos livrables finaux en quelques phrases"}
+        dataKey="livrable"
+        client:load
+      />
+    </Flex>
+
+    <Separator style={{ width: "30%" }} />
+
+    <Flex direction="column" gap="2" width="100%">
+      <PageSubHeading title="Pièces Jointes" />
+
+      <PageText>
+        Indiquer une preuve (ou plusieurs) de vos réalisations (jpeg, pdf,
+        video, doc, docx, odt)
+      </PageText>
+
+      <SyntheseFiles client:load />
+    </Flex>
+
+    <Separator style={{ width: "30%" }} />
+  </Flex>
+
+  <Flex justify="end" direction="row" m="3" gapX="3">
+    <ButtonPrev name="Précendent" href="/" />
+    <ButtonNext name="Suivant" href="/auto-evaluation" />
+  </Flex>
+</Layout>

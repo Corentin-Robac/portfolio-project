@@ -1,0 +1,8 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { AuthRedirect } from "@/components/AuthRedirect";
+---
+
+<Layout title="Welcome to Astro.">
+  <AuthRedirect client:load />
+</Layout>
